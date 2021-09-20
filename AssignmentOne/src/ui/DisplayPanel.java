@@ -5,6 +5,8 @@
  */
 package ui;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import model.PersonalDetails;
 
 /**
@@ -12,16 +14,19 @@ import model.PersonalDetails;
  * @author deepv
  */
 public class DisplayPanel extends javax.swing.JPanel {
-    
+
     PersonalDetails personalDetails;
+    int width;
 
     /**
      * Creates new form NewJPanel
      */
     public DisplayPanel(PersonalDetails personalDetails) {
         initComponents();
+        width = lblImage.getWidth();
         this.personalDetails = personalDetails;
         displayPersonalDetails();
+        displayImage();
     }
 
     /**
@@ -51,7 +56,6 @@ public class DisplayPanel extends javax.swing.JPanel {
         lblLinkedIn = new javax.swing.JLabel();
         lblIpAddress = new javax.swing.JLabel();
         lblBiometric = new javax.swing.JLabel();
-        lblFacePhoto = new javax.swing.JLabel();
         lblUniqueIden = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtGeoData = new javax.swing.JTextField();
@@ -69,8 +73,8 @@ public class DisplayPanel extends javax.swing.JPanel {
         txtLinkedin = new javax.swing.JTextField();
         txtIpAddress = new javax.swing.JTextField();
         txtBiometric = new javax.swing.JTextField();
-        txtFacePhoto = new javax.swing.JTextField();
         txtUniqueIden = new javax.swing.JTextField();
+        lblImage = new javax.swing.JLabel();
         llblCreate = new javax.swing.JLabel();
 
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -139,10 +143,6 @@ public class DisplayPanel extends javax.swing.JPanel {
         lblBiometric.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBiometric.setText("LinkedIn:");
 
-        lblFacePhoto.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        lblFacePhoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFacePhoto.setText("Full face photos and comparable images:");
-
         lblUniqueIden.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lblUniqueIden.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUniqueIden.setText("Any unique identifying number, characteristic, or code:");
@@ -156,6 +156,12 @@ public class DisplayPanel extends javax.swing.JPanel {
         txtDob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDobActionPerformed(evt);
+            }
+        });
+
+        txtUniqueIden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUniqueIdenActionPerformed(evt);
             }
         });
 
@@ -182,7 +188,6 @@ public class DisplayPanel extends javax.swing.JPanel {
                     .addComponent(lblBiometric)
                     .addComponent(lblDeviceIden)
                     .addComponent(lblLinkedIn)
-                    .addComponent(lblFacePhoto)
                     .addComponent(lblUniqueIden))
                 .addGap(18, 18, 18)
                 .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -202,14 +207,16 @@ public class DisplayPanel extends javax.swing.JPanel {
                     .addComponent(txtLinkedin)
                     .addComponent(txtIpAddress)
                     .addComponent(txtBiometric)
-                    .addComponent(txtFacePhoto)
                     .addComponent(txtUniqueIden, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jSubPanelLayout.setVerticalGroup(
             jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jSubPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(3, 3, 3)
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(jSubPanelLayout.createSequentialGroup()
                         .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -243,9 +250,7 @@ public class DisplayPanel extends javax.swing.JPanel {
                         .addComponent(lblDeviceIden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(19, 19, 19)
                         .addComponent(lblLinkedIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19)
-                        .addComponent(lblFacePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(14, 14, 14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblUniqueIden, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jSubPanelLayout.createSequentialGroup()
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,11 +284,9 @@ public class DisplayPanel extends javax.swing.JPanel {
                         .addComponent(txtIpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(txtBiometric, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(txtFacePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(txtUniqueIden)))
-                .addGap(69, 69, 69))
+                        .addGap(14, 14, 14)
+                        .addComponent(txtUniqueIden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane.setViewportView(jSubPanel);
@@ -316,6 +319,10 @@ public class DisplayPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    private void txtUniqueIdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUniqueIdenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUniqueIdenActionPerformed
+
     private void txtDobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDobActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDobActionPerformed
@@ -329,10 +336,10 @@ public class DisplayPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblDeviceIden;
     private javax.swing.JLabel lblDob;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblFacePhoto;
     private javax.swing.JLabel lblFaxNo;
     private javax.swing.JLabel lblGeoData;
     private javax.swing.JLabel lblHealthPlanNum;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblIpAddress;
     private javax.swing.JLabel lblLicenseNo;
     private javax.swing.JLabel lblLinkedIn;
@@ -348,7 +355,6 @@ public class DisplayPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDeviceIden;
     private javax.swing.JTextField txtDob;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFacePhoto;
     private javax.swing.JTextField txtFaxNo;
     private javax.swing.JTextField txtGeoData;
     private javax.swing.JTextField txtHealthPlanNum;
@@ -380,7 +386,12 @@ public class DisplayPanel extends javax.swing.JPanel {
         txtLinkedin.setText(personalDetails.getLinkedIn());
         txtIpAddress.setText(personalDetails.getIpAddress());
         txtBiometric.setText(personalDetails.getBiometric());
-        txtFacePhoto.setText(personalDetails.getFacePhoto());
         txtUniqueIden.setText(personalDetails.getUniqueIden());
+    }
+
+    private void displayImage() {
+        ImageIcon image = new ImageIcon(personalDetails.getFacePhoto());
+        Image resizedImage = image.getImage().getScaledInstance(149, 151, Image.SCALE_SMOOTH);
+        lblImage.setIcon(new ImageIcon(resizedImage));
     }
 }

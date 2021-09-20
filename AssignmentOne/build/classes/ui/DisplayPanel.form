@@ -67,7 +67,6 @@
                           <Component id="lblBiometric" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDeviceIden" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblLinkedIn" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFacePhoto" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblUniqueIden" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -88,17 +87,19 @@
                           <Component id="txtLinkedin" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtIpAddress" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtBiometric" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtFacePhoto" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtUniqueIden" alignment="0" min="-2" pref="201" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="215" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="lblImage" min="-2" pref="159" max="-2" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Component id="lblImage" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Group type="102" alignment="2" attributes="0">
                               <Component id="lblName" max="32767" attributes="0"/>
@@ -132,9 +133,7 @@
                               <Component id="lblDeviceIden" max="32767" attributes="0"/>
                               <EmptySpace min="19" pref="19" max="19" attributes="0"/>
                               <Component id="lblLinkedIn" max="32767" attributes="0"/>
-                              <EmptySpace min="19" pref="19" max="19" attributes="0"/>
-                              <Component id="lblFacePhoto" max="32767" attributes="0"/>
-                              <EmptySpace min="14" pref="14" max="14" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblUniqueIden" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="2" attributes="0">
@@ -169,13 +168,11 @@
                               <Component id="txtIpAddress" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="11" pref="11" max="11" attributes="0"/>
                               <Component id="txtBiometric" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="11" pref="11" max="11" attributes="0"/>
-                              <Component id="txtFacePhoto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="11" pref="11" max="11" attributes="0"/>
-                              <Component id="txtUniqueIden" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <Component id="txtUniqueIden" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -325,15 +322,6 @@
                 <Property name="text" type="java.lang.String" value="LinkedIn:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblFacePhoto">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="10" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Full face photos and comparable images:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblUniqueIden">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -381,9 +369,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtBiometric">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFacePhoto">
-            </Component>
             <Component class="javax.swing.JTextField" name="txtUniqueIden">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUniqueIdenActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblImage">
             </Component>
           </SubComponents>
         </Container>

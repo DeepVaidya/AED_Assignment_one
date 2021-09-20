@@ -5,6 +5,8 @@
  */
 package ui;
 
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.PersonalDetails;
 
@@ -68,8 +70,8 @@ public class CreationPanel extends javax.swing.JPanel {
         txtLinkedin = new javax.swing.JTextField();
         txtIpAddress = new javax.swing.JTextField();
         txtBiometric = new javax.swing.JTextField();
-        txtFacePhoto = new javax.swing.JTextField();
         txtUniqueIden = new javax.swing.JTextField();
+        btnBrowseImg = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         llblCreate = new javax.swing.JLabel();
 
@@ -165,6 +167,13 @@ public class CreationPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBrowseImg.setText("Browse Image");
+        btnBrowseImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseImgActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jSubPanelLayout = new javax.swing.GroupLayout(jSubPanel);
         jSubPanel.setLayout(jSubPanelLayout);
         jSubPanelLayout.setHorizontalGroup(
@@ -208,15 +217,15 @@ public class CreationPanel extends javax.swing.JPanel {
                     .addComponent(txtLinkedin)
                     .addComponent(txtIpAddress)
                     .addComponent(txtBiometric)
-                    .addComponent(txtFacePhoto)
-                    .addComponent(txtUniqueIden, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(369, Short.MAX_VALUE))
+                    .addComponent(txtUniqueIden, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(btnBrowseImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         jSubPanelLayout.setVerticalGroup(
             jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jSubPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jSubPanelLayout.createSequentialGroup()
                         .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(19, 19, 19)
@@ -249,10 +258,7 @@ public class CreationPanel extends javax.swing.JPanel {
                         .addComponent(lblDeviceIden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(19, 19, 19)
                         .addComponent(lblLinkedIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19)
-                        .addComponent(lblFacePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19)
-                        .addComponent(lblUniqueIden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(19, 19, 19))
                     .addGroup(jSubPanelLayout.createSequentialGroup()
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
@@ -285,9 +291,15 @@ public class CreationPanel extends javax.swing.JPanel {
                         .addComponent(txtIpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(txtBiometric, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(txtFacePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
+                        .addGap(11, 11, 11)))
+                .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSubPanelLayout.createSequentialGroup()
+                        .addComponent(lblFacePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(19, 19, 19)
+                        .addComponent(lblUniqueIden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jSubPanelLayout.createSequentialGroup()
+                        .addComponent(btnBrowseImg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(txtUniqueIden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(69, 69, 69))
         );
@@ -358,14 +370,27 @@ public class CreationPanel extends javax.swing.JPanel {
         personalDetails.setLinkedIn(txtLinkedin.getText());
         personalDetails.setIpAddress(txtIpAddress.getText());
         personalDetails.setBiometric(txtBiometric.getText());
-        personalDetails.setFacePhoto(txtFacePhoto.getText());
+//        personalDetails.setFacePhoto(txtFacePhoto.getText());
         personalDetails.setUniqueIden(txtUniqueIden.getText());
         
         JOptionPane.showMessageDialog(this, "Changes have been saved.");
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void btnBrowseImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseImgActionPerformed
+        JFileChooser browseimage = new JFileChooser();
+        int showDialogue = browseimage.showOpenDialog(null);
+        
+        if(showDialogue == JFileChooser.APPROVE_OPTION){
+            File file = browseimage.getSelectedFile();
+            String selectedImagePath = file.getAbsolutePath();
+            JOptionPane.showConfirmDialog(this, "Image selected successfully!");
+            personalDetails.setFacePhoto(selectedImagePath);
+        }
+    }//GEN-LAST:event_btnBrowseImgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowseImg;
     private javax.swing.JButton btnSave;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JPanel jSubPanel;
@@ -393,7 +418,6 @@ public class CreationPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtDeviceIden;
     private javax.swing.JTextField txtDob;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFacePhoto;
     private javax.swing.JTextField txtFaxNo;
     private javax.swing.JTextField txtGeoData;
     private javax.swing.JTextField txtHealthPlanNum;
