@@ -77,7 +77,12 @@ public class DisplayPanel extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         llblCreate = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(248, 248, 248));
+
+        jScrollPane.setBackground(new java.awt.Color(248, 248, 248));
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jSubPanel.setBackground(new java.awt.Color(248, 248, 248));
 
         lblName.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -291,7 +296,7 @@ public class DisplayPanel extends javax.swing.JPanel {
 
         jScrollPane.setViewportView(jSubPanel);
 
-        llblCreate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        llblCreate.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         llblCreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         llblCreate.setText("View Panel");
 
@@ -308,7 +313,7 @@ public class DisplayPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 23, Short.MAX_VALUE)
+                .addGap(0, 24, Short.MAX_VALUE)
                 .addComponent(llblCreate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))

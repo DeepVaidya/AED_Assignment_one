@@ -75,7 +75,12 @@ public class CreationPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         llblCreate = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(248, 248, 248));
+
+        jScrollPane.setBackground(new java.awt.Color(248, 248, 248));
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jSubPanel.setBackground(new java.awt.Color(248, 248, 248));
 
         lblName.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -167,6 +172,7 @@ public class CreationPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBrowseImg.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         btnBrowseImg.setText("Browse Image");
         btnBrowseImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,6 +312,9 @@ public class CreationPanel extends javax.swing.JPanel {
 
         jScrollPane.setViewportView(jSubPanel);
 
+        btnSave.setBackground(new java.awt.Color(215, 254, 211));
+        btnSave.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(72, 151, 64));
         btnSave.setText("Save Changes");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,7 +322,7 @@ public class CreationPanel extends javax.swing.JPanel {
             }
         });
 
-        llblCreate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        llblCreate.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         llblCreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         llblCreate.setText("Create Panel");
 
@@ -337,7 +346,7 @@ public class CreationPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSave)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

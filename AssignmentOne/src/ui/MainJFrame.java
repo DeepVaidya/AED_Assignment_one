@@ -41,7 +41,12 @@ public class MainJFrame extends javax.swing.JFrame {
         viewPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(217, 247, 255));
 
+        createPanel.setBackground(new java.awt.Color(239, 245, 247));
+
+        btnCreate.setBackground(new java.awt.Color(0, 198, 254));
+        btnCreate.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +54,8 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnView.setBackground(new java.awt.Color(0, 198, 254));
+        btnView.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +85,8 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jSplitPane.setLeftComponent(createPanel);
+
+        viewPanel.setBackground(new java.awt.Color(248, 248, 248));
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
