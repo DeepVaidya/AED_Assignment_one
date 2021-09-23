@@ -76,9 +76,10 @@ public class CreationPanel extends javax.swing.JPanel {
         txtDeviceIden = new javax.swing.JTextField();
         txtLinkedin = new javax.swing.JTextField();
         txtIpAddress = new javax.swing.JTextField();
-        txtBiometric = new javax.swing.JTextField();
         txtUniqueIden = new javax.swing.JTextField();
         btnBrowseImg = new javax.swing.JButton();
+        lblDobFormat = new javax.swing.JLabel();
+        btnBrowseBiometric = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         llblCreate = new javax.swing.JLabel();
 
@@ -180,10 +181,22 @@ public class CreationPanel extends javax.swing.JPanel {
         });
 
         btnBrowseImg.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        btnBrowseImg.setText("Browse Image");
+        btnBrowseImg.setText("Choose a photo");
         btnBrowseImg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBrowseImgActionPerformed(evt);
+            }
+        });
+
+        lblDobFormat.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        lblDobFormat.setForeground(new java.awt.Color(255, 0, 0));
+        lblDobFormat.setText("format: yyyy-mm-dd");
+
+        btnBrowseBiometric.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        btnBrowseBiometric.setText("Upload biometrics");
+        btnBrowseBiometric.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseBiometricActionPerformed(evt);
             }
         });
 
@@ -214,7 +227,6 @@ public class CreationPanel extends javax.swing.JPanel {
                     .addComponent(lblUniqueIden))
                 .addGap(18, 18, 18)
                 .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtName)
                     .addComponent(txtGeoData)
                     .addComponent(txtDob)
                     .addComponent(txtTeleNos)
@@ -229,10 +241,13 @@ public class CreationPanel extends javax.swing.JPanel {
                     .addComponent(txtDeviceIden)
                     .addComponent(txtLinkedin)
                     .addComponent(txtIpAddress)
-                    .addComponent(txtBiometric)
                     .addComponent(txtUniqueIden, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(btnBrowseImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(371, Short.MAX_VALUE))
+                    .addComponent(btnBrowseImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBrowseBiometric, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(txtName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDobFormat)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jSubPanelLayout.setVerticalGroup(
             jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,15 +284,15 @@ public class CreationPanel extends javax.swing.JPanel {
                         .addComponent(lblBiometric, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(19, 19, 19)
                         .addComponent(lblDeviceIden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19)
-                        .addComponent(lblLinkedIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(19, 19, 19))
                     .addGroup(jSubPanelLayout.createSequentialGroup()
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(txtGeoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
-                        .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDobFormat))
                         .addGap(11, 11, 11)
                         .addComponent(txtTeleNos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
@@ -302,9 +317,14 @@ public class CreationPanel extends javax.swing.JPanel {
                         .addComponent(txtLinkedin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(txtIpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(txtBiometric, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)))
+                .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jSubPanelLayout.createSequentialGroup()
+                        .addComponent(lblLinkedIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(19, 19, 19))
+                    .addGroup(jSubPanelLayout.createSequentialGroup()
+                        .addComponent(btnBrowseBiometric)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jSubPanelLayout.createSequentialGroup()
                         .addComponent(lblFacePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -377,11 +397,12 @@ public class CreationPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (validations()) {
 
-            // Map values from the text fields
-            readValsFromTxtFields();
-
-            // Show a pop-up when the save button is clicked
-            JOptionPane.showMessageDialog(this, "Changes have been saved.");
+            try {
+                // Map values from the text fields
+                readValsFromTxtFields();
+            } catch (ParseException ex) {
+                Logger.getLogger(CreationPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -402,8 +423,21 @@ public class CreationPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBrowseImgActionPerformed
 
+    private void btnBrowseBiometricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseBiometricActionPerformed
+        JFileChooser browseimage = new JFileChooser();
+        int showDialogue = browseimage.showOpenDialog(null);
+
+        if (showDialogue == JFileChooser.APPROVE_OPTION) {
+            File file = browseimage.getSelectedFile();
+            String selectedImagePath = file.getAbsolutePath();
+            JOptionPane.showConfirmDialog(this, "Select this image for biometrics?");
+            personalDetails.setFacePhoto(selectedImagePath);
+        }
+    }//GEN-LAST:event_btnBrowseBiometricActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowseBiometric;
     private javax.swing.JButton btnBrowseImg;
     private javax.swing.JButton btnSave;
     private javax.swing.JScrollPane jScrollPane;
@@ -412,6 +446,7 @@ public class CreationPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblBiometric;
     private javax.swing.JLabel lblDeviceIden;
     private javax.swing.JLabel lblDob;
+    private javax.swing.JLabel lblDobFormat;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFacePhoto;
     private javax.swing.JLabel lblFaxNo;
@@ -428,7 +463,6 @@ public class CreationPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblVehicleIden;
     private javax.swing.JLabel llblCreate;
     private javax.swing.JTextField txtBankAcc;
-    private javax.swing.JTextField txtBiometric;
     private javax.swing.JTextField txtDeviceIden;
     private javax.swing.JTextField txtDob;
     private javax.swing.JTextField txtEmail;
@@ -491,7 +525,7 @@ public class CreationPanel extends javax.swing.JPanel {
      * This method reads the value from the Text field and maps it to the
      * personal details instance
      */
-    private void readValsFromTxtFields() {
+    private void readValsFromTxtFields() throws ParseException {
         personalDetails.setName(txtName.getText());
         personalDetails.setGeoData(txtGeoData.getText());
 
@@ -499,7 +533,9 @@ public class CreationPanel extends javax.swing.JPanel {
         try {
             personalDetails.setDob(stringToDateConverter(txtDob.getText()));
         } catch (ParseException ex) {
-            Logger.getLogger(CreationPanel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Enter a valid date format!");
+            throw ex;
+//            Logger.getLogger(CreationPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         personalDetails.setTeleNos(txtTeleNos.getText());
         personalDetails.setFaxNo(txtFaxNo.getText());
@@ -513,7 +549,10 @@ public class CreationPanel extends javax.swing.JPanel {
         personalDetails.setDeviceIden(txtDeviceIden.getText());
         personalDetails.setLinkedIn(txtLinkedin.getText());
         personalDetails.setIpAddress(txtIpAddress.getText());
-        personalDetails.setBiometric(txtBiometric.getText());
+//        personalDetails.setBiometric(txtBiometric.getText());
         personalDetails.setUniqueIden(txtUniqueIden.getText());
+
+        // Show a pop-up when the save button is clicked
+        JOptionPane.showMessageDialog(this, "Changes have been saved.");
     }
 }
