@@ -6,6 +6,9 @@
 package ui;
 
 import java.awt.Image;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import model.PersonalDetails;
 
@@ -375,9 +378,43 @@ public class DisplayPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void displayPersonalDetails() {
+        
+        // call method to read data from personal details instance and set it to the txtFields
+        setValuesToTxtBox(personalDetails);
+    }
+
+    /**
+     * method to display selected image
+     */
+    private void displayImage() {
+        ImageIcon image = new ImageIcon(personalDetails.getFacePhoto());
+        Image resizedImage = image.getImage().getScaledInstance(149, 151, Image.SCALE_SMOOTH);
+        lblImage.setIcon(new ImageIcon(resizedImage));
+    }
+
+    /**
+     * Convert Date to string
+     *
+     * @param date
+     * @return
+     */
+    private String dateToStringConverter(Date date) {
+        String dateString;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        dateString = dateFormat.format(date);
+        return dateString;
+    }
+
+    /**
+     * This method reads the data from personalDetails object and sets it to the
+     * txtFields so that it can be viewed
+     *
+     * @param personalDetails
+     */
+    private void setValuesToTxtBox(PersonalDetails personalDetails) {
         txtName.setText(personalDetails.getName());
         txtGeoData.setText(personalDetails.getGeoData());
-        txtDob.setText(personalDetails.getDob());
+        txtDob.setText(dateToStringConverter(personalDetails.getDob()));
         txtTeleNos.setText(personalDetails.getTeleNos());
         txtFaxNo.setText(personalDetails.getFaxNo());
         txtEmail.setText(personalDetails.getEmail());
@@ -392,11 +429,5 @@ public class DisplayPanel extends javax.swing.JPanel {
         txtIpAddress.setText(personalDetails.getIpAddress());
         txtBiometric.setText(personalDetails.getBiometric());
         txtUniqueIden.setText(personalDetails.getUniqueIden());
-    }
-
-    private void displayImage() {
-        ImageIcon image = new ImageIcon(personalDetails.getFacePhoto());
-        Image resizedImage = image.getImage().getScaledInstance(149, 151, Image.SCALE_SMOOTH);
-        lblImage.setIcon(new ImageIcon(resizedImage));
     }
 }

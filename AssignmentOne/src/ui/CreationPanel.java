@@ -6,6 +6,12 @@
 package ui;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.PersonalDetails;
@@ -17,6 +23,7 @@ import model.PersonalDetails;
 public class CreationPanel extends javax.swing.JPanel {
 
     PersonalDetails personalDetails;
+
     /**
      * Creates new form NewJPanel
      */
@@ -362,37 +369,35 @@ public class CreationPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSsnActionPerformed
 
+    /**
+     * method to handle save button click event
+     *
+     * @param evt
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        personalDetails.setName(txtName.getText());
-        personalDetails.setGeoData(txtGeoData.getText());
-        personalDetails.setDob(txtDob.getText());
-        personalDetails.setTeleNos(txtTeleNos.getText());
-        personalDetails.setFaxNo(txtFaxNo.getText());
-        personalDetails.setEmail(txtEmail.getText());
-        personalDetails.setSsn(txtSsn.getText());
-        personalDetails.setMedicalRecNum(txtMedicalRecNum.getText());
-        personalDetails.setHealthPlanNum(txtHealthPlanNum.getText());
-        personalDetails.setBankAcc(txtBankAcc.getText());
-        personalDetails.setLicenseNo(txtLicenseNo.getText());
-        personalDetails.setVehicleIden(txtVehicleIden.getText());
-        personalDetails.setDeviceIden(txtDeviceIden.getText());
-        personalDetails.setLinkedIn(txtLinkedin.getText());
-        personalDetails.setIpAddress(txtIpAddress.getText());
-        personalDetails.setBiometric(txtBiometric.getText());
-//        personalDetails.setFacePhoto(txtFacePhoto.getText());
-        personalDetails.setUniqueIden(txtUniqueIden.getText());
-        
-        JOptionPane.showMessageDialog(this, "Changes have been saved.");
+        if (validations()) {
+
+            // Map values from the text fields
+            readValsFromTxtFields();
+
+            // Show a pop-up when the save button is clicked
+            JOptionPane.showMessageDialog(this, "Changes have been saved.");
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    /**
+     * method to handle the browse button click event
+     *
+     * @param evt
+     */
     private void btnBrowseImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseImgActionPerformed
         JFileChooser browseimage = new JFileChooser();
         int showDialogue = browseimage.showOpenDialog(null);
-        
-        if(showDialogue == JFileChooser.APPROVE_OPTION){
+
+        if (showDialogue == JFileChooser.APPROVE_OPTION) {
             File file = browseimage.getSelectedFile();
             String selectedImagePath = file.getAbsolutePath();
-            JOptionPane.showConfirmDialog(this, "Image selected successfully!");
+            JOptionPane.showConfirmDialog(this, "Select this image?");
             personalDetails.setFacePhoto(selectedImagePath);
         }
     }//GEN-LAST:event_btnBrowseImgActionPerformed
@@ -440,4 +445,75 @@ public class CreationPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUniqueIden;
     private javax.swing.JTextField txtVehicleIden;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Method to validate the input fields
+     *
+     * @return
+     */
+    private boolean validations() {
+
+        boolean validData = true;
+        // validate the name field
+        if (txtName.getText().isBlank() || txtName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Name field is blank, enter a valid name!");
+            validData = false;
+            return validData;
+        } // validate email address
+        else if (!txtEmail.getText().isBlank() && !txtEmail.getText().isEmpty() && !txtEmail.getText().contains("@")) {
+            JOptionPane.showMessageDialog(this, "Enter a valid Email address!");
+            validData = false;
+            return validData;
+        } // validate ssn
+        else if (!txtSsn.getText().isBlank() && !txtSsn.getText().isEmpty() && txtSsn.getText().length() != 9) {
+            JOptionPane.showMessageDialog(this, "Invalid SSN number, it should have 9 digits!");
+            validData = false;
+            return validData;
+        } else {
+            return true;
+
+        }
+    }
+
+    /**
+     * Convert String to date
+     *
+     * @param dateString
+     * @return
+     * @throws ParseException
+     */
+    private Date stringToDateConverter(String dateString) throws ParseException {
+        Date date = new SimpleDateFormat("yyyy-mm-dd").parse(dateString);
+        return date;
+    }
+
+    /**
+     * This method reads the value from the Text field and maps it to the
+     * personal details instance
+     */
+    private void readValsFromTxtFields() {
+        personalDetails.setName(txtName.getText());
+        personalDetails.setGeoData(txtGeoData.getText());
+
+        // set the value of DOB and throw an exception in case the parsing fails
+        try {
+            personalDetails.setDob(stringToDateConverter(txtDob.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(CreationPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        personalDetails.setTeleNos(txtTeleNos.getText());
+        personalDetails.setFaxNo(txtFaxNo.getText());
+        personalDetails.setEmail(txtEmail.getText());
+        personalDetails.setSsn(txtSsn.getText());
+        personalDetails.setMedicalRecNum(txtMedicalRecNum.getText());
+        personalDetails.setHealthPlanNum(txtHealthPlanNum.getText());
+        personalDetails.setBankAcc(txtBankAcc.getText());
+        personalDetails.setLicenseNo(txtLicenseNo.getText());
+        personalDetails.setVehicleIden(txtVehicleIden.getText());
+        personalDetails.setDeviceIden(txtDeviceIden.getText());
+        personalDetails.setLinkedIn(txtLinkedin.getText());
+        personalDetails.setIpAddress(txtIpAddress.getText());
+        personalDetails.setBiometric(txtBiometric.getText());
+        personalDetails.setUniqueIden(txtUniqueIden.getText());
+    }
 }

@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author deepv
@@ -13,7 +15,7 @@ public class PersonalDetails {
 
     private String name;
     private String geoData;
-    private String dob;
+    private Date dob;
     private String teleNos;
     private String faxNo;
     private String email;
@@ -46,11 +48,11 @@ public class PersonalDetails {
         this.geoData = geoData;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 
